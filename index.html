@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 3</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+  <link rel="stylesheet" href="/styles/overlay.css">
+</head>
+<body>
+  <div class="root">
+    <div class="tooltips" id="tooltips">
+
+    </div>
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="column">
+            <h1>Lab 3</h1>
+            <p>Data extracted from <code>[insert link here]</code>.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <h3>Daily</h3>
+            <p>
+              The X-axis denotes the hours of the day while the Y-axis
+              denotes the Tasks/activities in your day as well as any
+              subtasks, and each bar denotes the time taken by that specific
+              task.
+              The main tasks are represented with a colored banner and all
+              subtasks are represented under it.
+              Hovering over a task or subtask can display the exact start
+              and end times for that task (in the event that the tasks don't
+              begin at times marked on the X-axis)
+            </p>
+            <svg width="100%" viewBox="0 0 1000 600" preserveAspectRatio="none">
+              <rect x="0" y="0" width="100%" height="100%" fill="lightcoral"></rect>\
+            </svg>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <h3>Weekly</h3>
+            <p>
+              The X-axis represents the days of the week and the Y-axis
+              represents the hours of each day.
+              Tasks and events are placed in the respective time slot and
+              are color coded with labels. Overlapping events are placed
+              next to each other and on hover, each event can display more
+              information about that event.
+              Assuming the events to be classes of the day, hovering over
+              any class will give you information about the professor and
+              which classroom the class is held in.
+              We could have a button that lets you select your course (and
+              electives) and shows only the classes your course has.
+            </p>
+            <svg width="100%" viewBox="0 0 1000 600" preserveAspectRatio="none">
+              <rect x="0" y="0" width="100%" height="100%" fill="lightcoral"></rect>\
+            </svg>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <h3>Yearly</h3>
+            <p>
+              The X-axis represents the days of the week and the Y-axis
+              represents the weeks of the year. Dates can be mentioned under
+              each week. Each block represents a day in the year and is
+              colored/labeled according to the legend.
+              Lab 3 Submission4The legend can be extended and a button exists to choose the
+              course you are taking. This allows you to only see the events
+              that you need. On hover, each block displays more information
+              such as the precise date and time of the aforementioned event.
+            </p>
+            <svg width="100%" viewBox="0 0 1000 600" preserveAspectRatio="none">
+              <rect x="0" y="0" width="100%" height="100%" fill="lightcoral"></rect>\
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./scripts/main.js"></script>
+</body>
+</html>
