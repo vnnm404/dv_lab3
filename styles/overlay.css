@@ -29,3 +29,11 @@
 
   /* background-color: rgba(0, 0, 0, 0.2); */
 }
+
+svg {
+  border: 2px solid black;
+}
+
+svg > text {
+  font-size: 1rem;
+}

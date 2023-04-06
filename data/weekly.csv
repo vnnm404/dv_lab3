@@ -1,0 +1,9 @@
+day,start_time,end_time,title,description,label
+monday,8:30,10:00,DASS,Class 1 - Intro to scoping,College
+monday,9:00,9:30,DASS,In Class Submission,College
+monday,9:00,11:00,DASS,In Class Submission 2,College
+monday,10:00,11:30,Data Visualisation,Class 1 - Intro to visualisations,College
+monday,16:00,17:30,Pull Day,High effort day,Gym
+tuesday,8:30,10:00,DSA,Class 2,College
+tuesday,10:00,11:30,Intro to Algorithm Engineering,Class 3,College
+tuesday,16:00,17:30,Leg Day,The worst day,Gym
