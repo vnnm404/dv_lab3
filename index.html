@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,9 +15,14 @@
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js" integrity="sha512-BxJRFdTKV85fhFUw+olPr0B+UEzk8FTLxRB7dAdhoQ7SXmwMECj1I4BlSmZfeoSfy0OVA8xFLTDyObu3Nv1FoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.css" integrity="sha512-+eoiXLTtw/fDauKv6qMjHuO5pCnqJLz83WWIEpCF+fCAoIkK4UNy04CtJbNZ73Oo/WeNom5FwKie4NVorKjomA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js"
+    integrity="sha512-BxJRFdTKV85fhFUw+olPr0B+UEzk8FTLxRB7dAdhoQ7SXmwMECj1I4BlSmZfeoSfy0OVA8xFLTDyObu3Nv1FoQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.css"
+    integrity="sha512-+eoiXLTtw/fDauKv6qMjHuO5pCnqJLz83WWIEpCF+fCAoIkK4UNy04CtJbNZ73Oo/WeNom5FwKie4NVorKjomA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
   <div class="root">
     <div class="tooltips" id="tooltips">
@@ -44,8 +50,8 @@
               and end times for that task (in the event that the tasks don't
               begin at times marked on the X-axis)
             </p>
-            <svg width="100%" viewBox="0 0 1000 600" preserveAspectRatio="none">
-              <rect x="0" y="0" width="100%" height="100%" fill="lightcoral"></rect>\
+            <svg width="100%" viewBox="0 0 1000 600" preserveAspectRatio="none" id="svg_one">
+              <rect x="0" y="0" width="100%" height="100%" fill="none" id="svg_one"></rect>\
             </svg>
           </div>
         </div>
@@ -92,7 +98,8 @@
     </div>
   </div>
 
-  <script src="/scripts/main.js"></script>
-  <script src="/scripts/weekly.js"></script>
+  <script src="./scripts/main.js"></script>
+  <script src="./scripts/daily.js"></script>
 </body>
+
 </html>
