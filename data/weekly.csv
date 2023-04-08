@@ -1,9 +1,23 @@
 day,start_time,end_time,title,description,label
 monday,8:30,10:00,DASS,Class 1 - Intro to scoping,College
-monday,9:00,9:30,DASS,In Class Submission,College
-monday,9:00,11:00,DASS,In Class Submission 2,College
-monday,10:00,11:30,Data Visualisation,Class 1 - Intro to visualisations,College
-monday,16:00,17:30,Pull Day,High effort day,Gym
-tuesday,8:30,10:00,DSA,Class 2,College
-tuesday,10:00,11:30,Intro to Algorithm Engineering,Class 3,College
-tuesday,16:00,17:30,Leg Day,The worst day,Gym
+monday,10:00,11:30,DV,Class 1 - Intro to visualisations,College
+monday,14:00,15:30,Science 2,Class 1,College
+monday,16:00,17:30,Pull,High effort day,Gym
+tuesday,16:00,17:30,Leg,The worst day,Gym
+tuesday,14:00,15:30,IHS,Class 2,College
+tuesday,15:30,17:00,VE,Class 1,College
+wednesday,8:30,10:00,MDL,Class 1,College
+wednesday,16:00,17:30,Push,The worst day,Gym
+thursday,8:30,10:00,DASS,Class 2,College
+thursday,10:00,11:30,DV,Class 2 - Intro to visualisations,College
+thursday,14:00,15:30,Science 2,Class 1,College
+friday,16:00,17:30,Pull,The worst day,Gym
+friday,14:00,15:30,IHS,Class 2,College
+friday,15:30,17:00,VE,Class 1,College
+saturday,8:30,10:00,MDL,Class 1,College
+saturday,16:00,17:30,Leg,The worst day,Gym
+sunday,16:00,17:30,Push,The worst day,Gym
+sunday,8:00,9:00,A,A,Misc
+sunday,8:30,11:30,B,A,Misc
+sunday,13:00,14:00,C,A,Misc
+sunday,13:45,15:00,D,A,Misc

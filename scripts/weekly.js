@@ -4,14 +4,14 @@ data.forEach(item => {
   item.start_hour = parseInt(startTimeParts[0]);
   item.start_minute = parseInt(startTimeParts[1]);
   item.start_minutes = item.start_hour * 60 + item.start_minute;
-  delete item.start_time;
+  // delete item.start_time;
   // item.start_time = new Date(2023, 3, 6, item.start_hour, item.start_minute);
   
   const endTimeParts = item.end_time.split(':');
   item.end_hour = parseInt(endTimeParts[0]);
   item.end_minute = parseInt(endTimeParts[1]);
   item.end_minutes = item.end_hour * 60 + item.end_minute;
-  delete item.end_time;
+  // delete item.end_time;
 
   item.duration = item.end_minutes - item.start_minutes;
   // item.end_time = new Date(2023, 3, 6, item.end_hour, item.end_minute);
@@ -73,7 +73,7 @@ function drawSVG() {
       .attr('y2', (h / rows) * (i + 1))
       .attr('style', 'stroke:grey;stroke-width:1');
 
-    let time = `${i + 8}:00`;
+    let time = (i + 8 > 12 ? `${i + 8 - 12}pm` : `${i + 8}am`);
     // append times
     svg.append('text')
       .attr('x', 7)
@@ -117,6 +117,18 @@ function drawSVG() {
       return groups;
     }
 
+    // colors for labels
+    const colorScheme = {
+      College: 'rgba(213, 137, 54, 0.6)',
+      Gym: 'rgba(164, 66, 0, 0.6)',
+      Misc: 'rgba(239, 199, 194, 0.6)',
+    };
+    const colorSchemeOpaque = {
+      College: 'rgba(213, 137, 54, 1)',
+      Gym: 'rgba(164, 66, 0, 1)',
+      Misc: 'rgba(239, 199, 194, 1)',
+    };
+
     // find groups that overlap and display them
     const groups = overlappingGroups();
     for(let k = 0; k < groups.length; k++) {
@@ -133,18 +145,45 @@ function drawSVG() {
       const ww2 = (space - totalPaddingSpace) / group.length;
       for(let j = 0; j < group.length; j++) {
         const item = group[j];
-        console.log(item.start_minutes, (18 * 60 - 8 * 60), leftover);
 
         svgData.append('rect')
           .attr('x', space * i + ww2 * j + padding * (j + 1))
           .attr('y', start + (item.start_minutes - 8 * 60) / (18 * 60 - 8 * 60) * (leftover) + padding)
+          .attr('rx', 3)
+          .attr('ry', 3)
           .attr('width', ww2)
           .attr('height', (item.duration / 60) * (h / rows) - 2 * padding)
-          .attr('fill', 'red');
+          .attr('onmouseover', `evt.target.setAttribute('fill', '${colorSchemeOpaque[item.label]}');`)
+          .attr('onmouseout', `evt.target.setAttribute('fill', '${colorScheme[item.label]}');`)
+          .attr('fill', colorScheme[item.label])
+          .attr('id', 'weekly' + i + '-' + j + '-' + k);
+
+        $('#weekly' + i + '-' + j + '-' + k).qtip({
+          content: item.description,
+          position: {
+            my: 'bottom left',
+            at: 'right center',
+            target: 'mouse'
+          },
+          style: { 
+            classes: 'qtip-dark' 
+          }
+        });
+
+        svgData.append('text')
+          .attr('x', space * i + ww2 * j + padding * (j + 1) + 4)
+          .attr('y', start + (item.start_minutes - 8 * 60) / (18 * 60 - 8 * 60) * (leftover) + 14)
+          .attr('style', 'font-weight: bold')
+          .text(item.title);
+
+        svgData.append('text')
+          .attr('x', space * i + ww2 * j + padding * (j + 1) + 4)
+          .attr('y', start + (item.start_minutes - 8 * 60) / (18 * 60 - 8 * 60) * (leftover) + 24)
+          .text(item.start_time);
       }
     }
 
-    console.log(groups);
+    // console.log(groups);
   }
 }
 

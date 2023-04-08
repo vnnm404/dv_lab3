@@ -43,10 +43,15 @@ const height = elementHeight - margin.top - margin.bottom;
 const x = d3.scaleTime().range([0, width]);
 const y = d3.scaleBand().range([0, height]);
 
+// const svg = d3
+//   .select("#svg_one")
+//   .attr("width", width + margin.left + margin.right)
+//   .attr("height", height + margin.top + margin.bottom)
+//   .append("g")
+//   .attr("transform", `translate(${margin.left},${margin.top})`);
+
 const svg = d3
   .select("#svg_one")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
   .append("g")
   .attr("transform", `translate(${margin.left},${margin.top})`);
 
