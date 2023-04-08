@@ -6,7 +6,7 @@ data.forEach(item => {
   item.start_minutes = item.start_hour * 60 + item.start_minute;
   // delete item.start_time;
   // item.start_time = new Date(2023, 3, 6, item.start_hour, item.start_minute);
-  
+
   const endTimeParts = item.end_time.split(':');
   item.end_hour = parseInt(endTimeParts[0]);
   item.end_minute = parseInt(endTimeParts[1]);
@@ -45,7 +45,7 @@ function drawSVG() {
     .attr('y', topMargin);
 
   // draw y lines
-  for(let i = 0; i < days.length + 1; i++) {
+  for (let i = 0; i < days.length + 1; i++) {
     svgData.append('line')
       .attr('x1', (w / days.length) * i)
       .attr('x2', (w / days.length) * i)
@@ -65,7 +65,7 @@ function drawSVG() {
 
   // draw x lines (time 8am to 6pm => 8:00 to 18:00)
   const rows = (18 - 8 + 1) + 1;
-  for(let i = 0; i < rows - 1; i++) {
+  for (let i = 0; i < rows - 1; i++) {
     svgData.append('line')
       .attr('x1', 0)
       .attr('x2', w)
@@ -82,7 +82,7 @@ function drawSVG() {
   }
 
   // draw boxes
-  for(let i = 0; i < days.length; i++) {
+  for (let i = 0; i < days.length; i++) {
     let day = days[i];
 
     const daywiseData = data.filter(item => item.day === day);
@@ -100,7 +100,7 @@ function drawSVG() {
       let groups = [];
       let group = [];
       let latest = -1;
-      for(let item of daywiseData) {
+      for (let item of daywiseData) {
         if (item.start_minutes < latest) {
           group.push(item);
           latest = Math.max(latest, item.start_minutes + item.duration)
@@ -131,7 +131,7 @@ function drawSVG() {
 
     // find groups that overlap and display them
     const groups = overlappingGroups();
-    for(let k = 0; k < groups.length; k++) {
+    for (let k = 0; k < groups.length; k++) {
       let group = groups[k];
       // (w / days.length)
       const space = w / days.length;
@@ -143,7 +143,7 @@ function drawSVG() {
       // (h / rows) <- 1 hour, for item.duration / 60 hours
       const totalPaddingSpace = (group.length + 1) * padding;
       const ww2 = (space - totalPaddingSpace) / group.length;
-      for(let j = 0; j < group.length; j++) {
+      for (let j = 0; j < group.length; j++) {
         const item = group[j];
 
         svgData.append('rect')
@@ -165,8 +165,8 @@ function drawSVG() {
             at: 'right center',
             target: 'mouse'
           },
-          style: { 
-            classes: 'qtip-dark' 
+          style: {
+            classes: 'qtip-dark'
           }
         });
 

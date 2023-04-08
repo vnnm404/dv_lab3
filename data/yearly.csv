@@ -1,27 +1,27 @@
-week,day,name,description
-1,7,Holiday,Its a Sunday; enjoy
-2,7,Holiday,Its a Sunday; enjoy
-3,7,Holiday,Its a Sunday; enjoy
-4,7,Holiday,Its a Sunday; enjoy
-5,7,Holiday,Its a Sunday; enjoy
-6,7,Holiday,Its a Sunday; enjoy
-7,7,Holiday,Its a Sunday; enjoy
-8,7,Holiday,Its a Sunday; enjoy
-9,7,Holiday,Its a Sunday; enjoy
-6,1,Holiday,Vibes
-6,1,Event,Google VP talk
-6,2,Quiz,DV Quiz
-6,5,Quiz,DV Lab Exam
-3,2,Event,Black Tuesday
-4,4,Event,R&D Showcase
-9,4,Event,Felicity Day 1
-9,4,Event,Felicity Day 1
-9,4,Event,Felicity Day 1
-9,5,Event,Felicity Day 2
-9,5,Event,Felicity Day 2
-9,6,Event,Felicity Day 3
-1,3,Quiz,Quiz in Week 1;  F
-1,3,Quiz,Quiz in Week 1; F
-1,4,Quiz,Quiz in Week 1; F
-1,5,Quiz,Quiz in Week 1; F
-1,5,Quiz,Quiz in Week 1; F
+week,day,name,description,count
+1,7,Holiday,Its a Sunday; enjoy,0
+2,7,Holiday,Its a Sunday; enjoy,1
+3,7,Holiday,Its a Sunday; enjoy,2
+4,7,Holiday,Its a Sunday; enjoy,3
+5,7,Holiday,Its a Sunday; enjoy,4
+6,7,Holiday,Its a Sunday; enjoy,5
+7,7,Holiday,Its a Sunday; enjoy,6
+8,7,Holiday,Its a Sunday; enjoy,7
+9,7,Holiday,Its a Sunday; enjoy,8
+6,1,Holiday,Vibes,9
+6,1,Event,Google VP talk,10
+6,2,Quiz,DV Quiz,11
+6,5,Quiz,DV Lab Exam,12
+3,2,Event,Black Tuesday,13
+4,4,Event,R&D Showcase,14
+9,4,Event,Felicity Day 1,15
+9,4,Event,Felicity Day 1,16
+9,4,Event,Felicity Day 1,17
+9,5,Event,Felicity Day 2,18
+9,5,Event,Felicity Day 2,19
+9,6,Event,Felicity Day 3,20
+1,3,Quiz,Quiz in Week 1; F,21
+1,3,Quiz,Quiz in Week 1; F,22
+1,4,Quiz,Quiz in Week 1; F,23
+1,5,Quiz,Quiz in Week 1; F,24
+1,5,Quiz,Quiz in Week 1; F,25

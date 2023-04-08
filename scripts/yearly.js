@@ -3,6 +3,7 @@ const events = await d3.csv('../data/yearly.csv')
 events.forEach(item => {
     item.week = parseInt(item.week)
     item.day = parseInt(item.day)
+    item.count = parseInt(item.count)
 })
 
 let count = new Array(10).fill(0).map(() => new Array(8).fill(0));
@@ -16,17 +17,6 @@ const Height = 600
 const Margin = { top: 20, bottom: 0, left: 20, right: 20 }
 const innerWidth = Width - Margin.left - Margin.right
 const innerHeight = Height - Margin.top - Margin.top
-
-let tooltip = d3.select("#svg_three")
-    .append("div")
-    .style("position", "absolute")
-    .style("opacity", 0)
-    .attr("class", "tooltip")
-    .style("background-color", "white")
-    .style("border", "solid")
-    .style("border-width", "2px")
-    .style("border-radius", "5px")
-    .style("padding", "5px")
 
 const days = ['WEEK', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY']
 const color = { Quiz: "#4A235A", Event: "#1B4F72", Holiday: "#0E6251" }
@@ -117,39 +107,42 @@ for (i of events) {
 
     let Block = SVG.append("g")
         .on("mouseover", function (d) {
-            d3.select(this).select('rect').style("opacity", 0.7);
-            d3.select(this).select('text').style("fill", "black").style("font-weight", 900).style("font-size", 12)
-
-            tooltip
-                .html(i.description)
-                .style("opacity", 1)
-        })
-        .on("mousemove", function (event, d) {
-            tooltip
-                .style("left", (event.x + 10) + "px")
-                .style("top", (event.y - 40) + "px")
+            d3.select(this).select('rect').style("opacity", 1);
+            d3.select(this).select('text').style("fill", "white").style("font-weight", 900).style("font-size", 12)
         })
         .on("mouseout", function (d) {
-            d3.select(this).select('rect').style("opacity", 1);
-            d3.select(this).select('text').style("fill", "white").style("font-weight", 400).style("font-size", 11)
-
-            tooltip
-                .style("opacity", 0)
+            d3.select(this).select('rect').style("opacity", 0.7);
+            d3.select(this).select('text').style("fill", "black").style("font-weight", 400).style("font-size", 11)
         })
+        .attr("id", "yearly" + i.count)
+
+    $('#yearly' + i.count).qtip({
+        content: i.description,
+        position: {
+            my: 'bottom left',
+            at: 'right center',
+            target: 'mouse'
+        },
+        style: {
+            classes: 'qtip-dark'
+        }
+    });
 
     Block.append("rect")
         .attr("x", x)
         .attr("y", y)
+        .attr('rx', 3)
+        .attr('ry', 3)
         .attr("width", maxwidth)
         .attr("height", maxheight / count[i.week][i.day])
         .style("fill", color[type])
-        .attr("opacity", 1)
+        .attr("opacity", 0.7)
 
     Block.append("text")
         .text(i.name)
         .attr("transform", `translate(${x + maxwidth / 2}, ${y + (maxheight / (2 * count[i.week][i.day])) + 3})`)
         .style("text-anchor", "middle")
-        .style("fill", "white")
+        .style("fill", "black")
         .style("font-size", 11)
         .style("font-weight", 400)
 }
