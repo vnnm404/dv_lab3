@@ -1,36 +1,33 @@
-const data = [
-  {
-    class: "Class 1",
-    start: new Date(2023, 3, 6, 8),
-    end: new Date(2023, 3, 6, 16),
-    tasks: [
-      { name: "Task 1.1", start: new Date(2023, 3, 6, 8), end: new Date(2023, 3, 6, 10) },
-      { name: "Task 1.2", start: new Date(2023, 3, 6, 11), end: new Date(2023, 3, 6, 13) },
-      { name: "Task 1.3", start: new Date(2023, 3, 6, 14), end: new Date(2023, 3, 6, 16) }
-    ]
-  },
-  {
-    class: "Class 2",
-    start: new Date(2023, 3, 6, 9),
-    end: new Date(2023, 3, 6, 17),
+let data = await d3.csv('/data/daily.csv', (d) => {
+  d.start = new Date(d.start);
+  d.end = new Date(d.end);
+  d.tasks = JSON.parse(d.tasks.replace(/""/g, '"'));
+  d.tasks.forEach(task => {
+    task.start = new Date(task.start);
+    task.end = new Date(task.end);
+  });
+  return d;
+});
 
-    tasks: [
-      { name: "Task 2.1", start: new Date(2023, 3, 6, 9), end: new Date(2023, 3, 6, 11) },
-      { name: "Task 2.2", start: new Date(2023, 3, 6, 12), end: new Date(2023, 3, 6, 14) },
-      { name: "Task 2.3", start: new Date(2023, 3, 6, 15), end: new Date(2023, 3, 6, 17) }
-    ]
-  },
-  {
-    class: "Class 3",
-    start: new Date(2023, 3, 6, 10),
-    end: new Date(2023, 3, 6, 19),
-    tasks: [
-      { name: "Task 3.1", start: new Date(2023, 3, 6, 10), end: new Date(2023, 3, 6, 12) },
-      { name: "Task 3.2", start: new Date(2023, 3, 6, 13), end: new Date(2023, 3, 6, 16) },
-      { name: "Task 3.3", start: new Date(2023, 3, 6, 17), end: new Date(2023, 3, 6, 19) }
-    ]
+const color_map = {}
+
+function getColor(d) {
+  if (color_map[d.class]) {
+    return color_map[d.class]
+  } else {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+
+    const color = `#${r.toString(16).padStart(2, '0')}` +
+      `${g.toString(16).padStart(2, '0')}` +
+      `${b.toString(16).padStart(2, '0')}`;
+    color_map[d.class] = color
+    return color;
   }
-];
+}
+
+
 
 const elementWidth = 1000;
 const elementHeight = 600;
@@ -96,12 +93,24 @@ groups
   .filter((d) => !d.isTask)
   .append("rect")
   .attr("class", "class")
-  .attr("x", (d) => x(d.start))
+  .attr("x", 0)
   .attr("y", 0)
-  .attr("width", (d) => x(d.end) - x(d.start))
+  .attr("width", width)
   .attr("height", y.bandwidth())
-  .style("fill", (d) => getColor(d));
+  .style("fill", (d) => getColor(d))
+  .style("opacity", 0.5);
 
+// draw white bars on top of class bars
+const whiteBarGap = 4;
+groups
+  .filter((d) => !d.isTask)
+  .append("rect")
+  .attr("class", "class-overlay")
+  .attr("x", (d) => x(d.start) + whiteBarGap)
+  .attr("y", y.bandwidth() / 4)
+  .attr("width", (d) => x(d.end) - x(d.start) - 2 * whiteBarGap)
+  .attr("height", y.bandwidth() / 2)
+  .style("fill", "white");
 // draw the subtask bars
 groups
   .filter((d) => d.isTask)
@@ -111,18 +120,7 @@ groups
   .attr("y", y.bandwidth() / 4)
   .attr("width", (d) => x(d.end) - x(d.start))
   .attr("height", y.bandwidth() / 2)
-  .style("fill", (d) => getColor(d.class));
+  .style("fill", (d) => getColor(d));
 
-const color_map = []
 
-function getColor(d) {
-  const r = Math.floor(Math.random() * 256);
-  const g = Math.floor(Math.random() * 256);
-  const b = Math.floor(Math.random() * 256);
 
-  const color = `#${r.toString(16).padStart(2, '0')}` +
-    `${g.toString(16).padStart(2, '0')}` +
-    `${b.toString(16).padStart(2, '0')}`;
-
-  return color;
-}
